@@ -1,0 +1,28 @@
+table Dim_Geography
+	lineageTag: 550e8400-e29b-41d4-a716-446655440012
+
+	partition Dim_Geography = m
+		mode: import
+		source =
+			```
+			let
+			    Source = Csv.Document(File.Contents("data/Dim_Geography.csv"),[Delimiter=",", Columns=1, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+			    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+			    Changed = Table.TransformColumnTypes(Promoted,{{"AreaID", type text}})
+			in
+			    Changed
+			```
+
+	column AreaID
+		dataType: string
+		isKey
+		isHidden
+		sourceColumn: AreaID
+		summarizeBy: none
+		lineageTag: 550e8400-e29b-41d4-a716-446655440013
+
+	column 'Area Name'
+		dataType: string
+		sourceColumn: AreaID
+		summarizeBy: none
+		lineageTag: 550e8400-e29b-41d4-a716-446655440014

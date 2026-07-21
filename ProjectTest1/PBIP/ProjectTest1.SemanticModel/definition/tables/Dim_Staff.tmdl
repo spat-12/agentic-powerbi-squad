@@ -1,0 +1,28 @@
+table Dim_Staff
+	lineageTag: 550e8400-e29b-41d4-a716-446655440015
+
+	partition Dim_Staff = m
+		mode: import
+		source =
+			```
+			let
+			    Source = Csv.Document(File.Contents("data/Dim_Staff.csv"),[Delimiter=",", Columns=1, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+			    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+			    Changed = Table.TransformColumnTypes(Promoted,{{"SalespersonID", type text}})
+			in
+			    Changed
+			```
+
+	column SalespersonID
+		dataType: string
+		isKey
+		isHidden
+		sourceColumn: SalespersonID
+		summarizeBy: none
+		lineageTag: 550e8400-e29b-41d4-a716-446655440016
+
+	column 'Salesperson Name'
+		dataType: string
+		sourceColumn: SalespersonID
+		summarizeBy: none
+		lineageTag: 550e8400-e29b-41d4-a716-446655440017

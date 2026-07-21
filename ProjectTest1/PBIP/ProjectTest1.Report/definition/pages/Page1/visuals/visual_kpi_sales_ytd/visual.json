@@ -1,0 +1,95 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "visual_kpi_sales_ytd",
+  "position": {
+    "x": 16,
+    "y": 96,
+    "z": 0,
+    "width": 624,
+    "height": 140,
+    "tabOrder": 2
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Sales LC YTD"
+                }
+              },
+              "queryRef": "_Measures.Sales LC YTD",
+              "nativeQueryRef": "Sales LC YTD"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Budget LC"
+                }
+              },
+              "queryRef": "_Measures.Budget LC",
+              "nativeQueryRef": "Budget LC"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Budget Variance LC"
+                }
+              },
+              "queryRef": "_Measures.Budget Variance LC",
+              "nativeQueryRef": "Budget Variance LC"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Budget Achievement %"
+                }
+              },
+              "queryRef": "_Measures.Budget Achievement %",
+              "nativeQueryRef": "Budget Achievement %"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "value": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "20D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

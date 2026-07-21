@@ -1,0 +1,75 @@
+table Fact_Sales
+	lineageTag: 550e8400-e29b-41d4-a716-446655440024
+
+	partition Fact_Sales = m
+		mode: import
+		source =
+			```
+			let
+			    Source = Csv.Document(File.Contents("data/Fact_Sales.csv"),[Delimiter=",", Columns=9, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+			    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+			    Changed = Table.TransformColumnTypes(Promoted,{{"TransactionID", type text}, {"DateKey", type date}, {"AreaID", type text}, {"SalespersonID", type text}, {"CustomerID", type text}, {"ProductID", type text}, {"Sales_LC", type number}, {"Budget_LC", type number}, {"Profit_LC", type number}})
+			in
+			    Changed
+			```
+
+	column TransactionID
+		dataType: string
+		isKey
+		isHidden
+		sourceColumn: TransactionID
+		summarizeBy: none
+		lineageTag: 550e8400-e29b-41d4-a716-446655440025
+
+	column DateKey
+		dataType: dateTime
+		isHidden
+		sourceColumn: DateKey
+		summarizeBy: none
+		lineageTag: 550e8400-e29b-41d4-a716-446655440026
+
+	column AreaID
+		dataType: string
+		isHidden
+		sourceColumn: AreaID
+		summarizeBy: none
+		lineageTag: 550e8400-e29b-41d4-a716-446655440027
+
+	column SalespersonID
+		dataType: string
+		isHidden
+		sourceColumn: SalespersonID
+		summarizeBy: none
+		lineageTag: 550e8400-e29b-41d4-a716-446655440028
+
+	column CustomerID
+		dataType: string
+		isHidden
+		sourceColumn: CustomerID
+		summarizeBy: none
+		lineageTag: 550e8400-e29b-41d4-a716-446655440029
+
+	column ProductID
+		dataType: string
+		isHidden
+		sourceColumn: ProductID
+		summarizeBy: none
+		lineageTag: 550e8400-e29b-41d4-a716-446655440030
+
+	column 'Sales Amount LC'
+		dataType: double
+		sourceColumn: Sales_LC
+		summarizeBy: sum
+		lineageTag: 550e8400-e29b-41d4-a716-446655440031
+
+	column 'Budget Amount LC'
+		dataType: double
+		sourceColumn: Budget_LC
+		summarizeBy: sum
+		lineageTag: 550e8400-e29b-41d4-a716-446655440032
+
+	column 'Profit Amount LC'
+		dataType: double
+		sourceColumn: Profit_LC
+		summarizeBy: sum
+		lineageTag: 550e8400-e29b-41d4-a716-446655440033

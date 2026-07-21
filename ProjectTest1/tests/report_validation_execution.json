@@ -1,0 +1,314 @@
+{
+  "generatedAt": "2026-07-21T09:18:02Z",
+  "project": "ProjectTest1",
+  "overallStatus": "PASS",
+  "passes": 38,
+  "warnings": 0,
+  "errors": 0,
+  "issues": [
+    {
+      "section": "Blueprint Compliance",
+      "check": "Page Count",
+      "status": "PASS",
+      "page": "",
+      "visual": "",
+      "details": "Expected 1, metadata has 1, disk has 1"
+    },
+    {
+      "section": "Structural",
+      "check": "Active Page Reference",
+      "status": "PASS",
+      "page": "",
+      "visual": "",
+      "details": "activePageName=Page1"
+    },
+    {
+      "section": "Structural",
+      "check": "Page folder/name contract",
+      "status": "PASS",
+      "page": "Page1",
+      "visual": "",
+      "details": ""
+    },
+    {
+      "section": "Blueprint Compliance",
+      "check": "Page Display Name",
+      "status": "PASS",
+      "page": "Page1",
+      "visual": "",
+      "details": "Expected 'Sales Overview', actual 'Sales Overview'"
+    },
+    {
+      "section": "Structural",
+      "check": "Visual folder/name contract",
+      "status": "PASS",
+      "page": "Page1",
+      "visual": "visual_area",
+      "details": ""
+    },
+    {
+      "section": "Structural",
+      "check": "Visual container allowed properties",
+      "status": "PASS",
+      "page": "Page1",
+      "visual": "visual_area",
+      "details": ""
+    },
+    {
+      "section": "Structural",
+      "check": "Visual filters placement",
+      "status": "PASS",
+      "page": "Page1",
+      "visual": "visual_area",
+      "details": ""
+    },
+    {
+      "section": "Field Cross-Reference",
+      "check": "Column binding",
+      "status": "PASS",
+      "page": "Page1",
+      "visual": "visual_area",
+      "details": "Dim_Geography.Area Name"
+    },
+    {
+      "section": "Accessibility & Best Practices",
+      "check": "Position within bounds",
+      "status": "PASS",
+      "page": "Page1",
+      "visual": "visual_area",
+      "details": ""
+    },
+    {
+      "section": "Structural",
+      "check": "Unique nativeQueryRef",
+      "status": "PASS",
+      "page": "Page1",
+      "visual": "visual_area",
+      "details": ""
+    },
+    {
+      "section": "Accessibility & Best Practices",
+      "check": "Slicer usable height",
+      "status": "PASS",
+      "page": "Page1",
+      "visual": "visual_area",
+      "details": "height=64.0"
+    },
+    {
+      "section": "Structural",
+      "check": "Visual folder/name contract",
+      "status": "PASS",
+      "page": "Page1",
+      "visual": "visual_fiscal_year",
+      "details": ""
+    },
+    {
+      "section": "Structural",
+      "check": "Visual container allowed properties",
+      "status": "PASS",
+      "page": "Page1",
+      "visual": "visual_fiscal_year",
+      "details": ""
+    },
+    {
+      "section": "Structural",
+      "check": "Visual filters placement",
+      "status": "PASS",
+      "page": "Page1",
+      "visual": "visual_fiscal_year",
+      "details": ""
+    },
+    {
+      "section": "Field Cross-Reference",
+      "check": "Column binding",
+      "status": "PASS",
+      "page": "Page1",
+      "visual": "visual_fiscal_year",
+      "details": "Dim_Date.FiscalYear"
+    },
+    {
+      "section": "Accessibility & Best Practices",
+      "check": "Position within bounds",
+      "status": "PASS",
+      "page": "Page1",
+      "visual": "visual_fiscal_year",
+      "details": ""
+    },
+    {
+      "section": "Structural",
+      "check": "Unique nativeQueryRef",
+      "status": "PASS",
+      "page": "Page1",
+      "visual": "visual_fiscal_year",
+      "details": ""
+    },
+    {
+      "section": "Accessibility & Best Practices",
+      "check": "Slicer usable height",
+      "status": "PASS",
+      "page": "Page1",
+      "visual": "visual_fiscal_year",
+      "details": "height=64.0"
+    },
+    {
+      "section": "Structural",
+      "check": "Visual folder/name contract",
+      "status": "PASS",
+      "page": "Page1",
+      "visual": "visual_kpi_sales_ytd",
+      "details": ""
+    },
+    {
+      "section": "Structural",
+      "check": "Visual container allowed properties",
+      "status": "PASS",
+      "page": "Page1",
+      "visual": "visual_kpi_sales_ytd",
+      "details": ""
+    },
+    {
+      "section": "Structural",
+      "check": "Visual filters placement",
+      "status": "PASS",
+      "page": "Page1",
+      "visual": "visual_kpi_sales_ytd",
+      "details": ""
+    },
+    {
+      "section": "Field Cross-Reference",
+      "check": "Measure binding",
+      "status": "PASS",
+      "page": "Page1",
+      "visual": "visual_kpi_sales_ytd",
+      "details": "_Measures.Sales LC YTD"
+    },
+    {
+      "section": "Field Cross-Reference",
+      "check": "Measure binding",
+      "status": "PASS",
+      "page": "Page1",
+      "visual": "visual_kpi_sales_ytd",
+      "details": "_Measures.Budget LC"
+    },
+    {
+      "section": "Field Cross-Reference",
+      "check": "Measure binding",
+      "status": "PASS",
+      "page": "Page1",
+      "visual": "visual_kpi_sales_ytd",
+      "details": "_Measures.Budget Variance LC"
+    },
+    {
+      "section": "Field Cross-Reference",
+      "check": "Measure binding",
+      "status": "PASS",
+      "page": "Page1",
+      "visual": "visual_kpi_sales_ytd",
+      "details": "_Measures.Budget Achievement %"
+    },
+    {
+      "section": "Accessibility & Best Practices",
+      "check": "Position within bounds",
+      "status": "PASS",
+      "page": "Page1",
+      "visual": "visual_kpi_sales_ytd",
+      "details": ""
+    },
+    {
+      "section": "Structural",
+      "check": "Unique nativeQueryRef",
+      "status": "PASS",
+      "page": "Page1",
+      "visual": "visual_kpi_sales_ytd",
+      "details": ""
+    },
+    {
+      "section": "Accessibility & Best Practices",
+      "check": "Grouped KPI callout size",
+      "status": "PASS",
+      "page": "Page1",
+      "visual": "visual_kpi_sales_ytd",
+      "details": "fontSize=20D"
+    },
+    {
+      "section": "Structural",
+      "check": "Visual folder/name contract",
+      "status": "PASS",
+      "page": "Page1",
+      "visual": "visual_trend_sales_ytd",
+      "details": ""
+    },
+    {
+      "section": "Structural",
+      "check": "Visual container allowed properties",
+      "status": "PASS",
+      "page": "Page1",
+      "visual": "visual_trend_sales_ytd",
+      "details": ""
+    },
+    {
+      "section": "Structural",
+      "check": "Visual filters placement",
+      "status": "PASS",
+      "page": "Page1",
+      "visual": "visual_trend_sales_ytd",
+      "details": ""
+    },
+    {
+      "section": "Field Cross-Reference",
+      "check": "Column binding",
+      "status": "PASS",
+      "page": "Page1",
+      "visual": "visual_trend_sales_ytd",
+      "details": "Dim_Date.Fiscal Month-Year"
+    },
+    {
+      "section": "Field Cross-Reference",
+      "check": "Measure binding",
+      "status": "PASS",
+      "page": "Page1",
+      "visual": "visual_trend_sales_ytd",
+      "details": "_Measures.Sales LC YTD"
+    },
+    {
+      "section": "Field Cross-Reference",
+      "check": "Column binding",
+      "status": "PASS",
+      "page": "Page1",
+      "visual": "visual_trend_sales_ytd",
+      "details": "Dim_Date.Fiscal Month-Year"
+    },
+    {
+      "section": "Accessibility & Best Practices",
+      "check": "Position within bounds",
+      "status": "PASS",
+      "page": "Page1",
+      "visual": "visual_trend_sales_ytd",
+      "details": ""
+    },
+    {
+      "section": "Structural",
+      "check": "Unique nativeQueryRef",
+      "status": "PASS",
+      "page": "Page1",
+      "visual": "visual_trend_sales_ytd",
+      "details": ""
+    },
+    {
+      "section": "Blueprint Compliance",
+      "check": "Visual count per page",
+      "status": "PASS",
+      "page": "Page1",
+      "visual": "",
+      "details": "Expected 4, actual 4"
+    },
+    {
+      "section": "Blueprint Compliance",
+      "check": "Visual type match",
+      "status": "PASS",
+      "page": "Page1",
+      "visual": "",
+      "details": "Expected {'slicer': 2, 'cardVisual': 1, 'clusteredColumnChart': 1}, actual {'slicer': 2, 'cardVisual': 1, 'clusteredColumnChart': 1}"
+    }
+  ]
+}

@@ -1,0 +1,139 @@
+{
+  "pages": [
+    {
+      "pageId": "Page1",
+      "pageName": "Overview",
+      "displayName": "Sales Overview",
+      "goal": "Provide a summary of key fiscal sales KPIs, budget performance, and area-level trends.",
+      "targetAudience": "Sales Manager",
+      "storyCard": {
+        "businessQuestion": "Are we on track against budget and which areas are driving FYTD performance?",
+        "keyMessage": "Budget achievement is the primary signal, while area-level sales and product trends show where to focus.",
+        "expectedAction": "Use the area and fiscal year slicers to isolate performance gaps and monitor top products."
+      },
+      "width": 1280,
+      "height": 720,
+      "displayOption": "FitToWidth",
+      "slicers": [
+        {
+          "field": "Dim_Date[FiscalYear]",
+          "type": "dropdown",
+          "label": "Fiscal Year",
+          "containerStyle": "elevated",
+          "position": {
+            "x": 16,
+            "y": 16,
+            "width": 180,
+            "height": 64
+          }
+        },
+        {
+          "field": "Dim_Geography[Area Name]",
+          "type": "dropdown",
+          "label": "Area",
+          "containerStyle": "elevated",
+          "position": {
+            "x": 208,
+            "y": 16,
+            "width": 180,
+            "height": 64
+          }
+        }
+      ],
+      "visuals": [
+        {
+          "visualId": "visual_kpi_sales_ytd",
+          "visualType": "multiRowCard",
+          "implementationStrategy": {
+            "mode": "native",
+            "primaryVisualType": "multiRowCard",
+            "secondaryVisualTypes": [],
+            "fallbackMode": null,
+            "fidelityRisk": "low",
+            "constraints": [],
+            "workarounds": [],
+            "notFeasibleAspects": []
+          },
+          "title": "FYTD Sales & Budget KPIs",
+          "measures": [
+            "Sales LC YTD",
+            "Budget LC",
+            "Budget Variance LC",
+            "Budget Achievement %"
+          ],
+          "axisFields": [],
+          "legendField": null,
+          "narrativeRole": "hero-kpi",
+          "containerStyle": "elevated",
+          "sortBy": null,
+          "defaultGranularity": null,
+          "tooltip": null,
+          "drillthrough": null,
+          "position": {
+            "x": 16,
+            "y": 96,
+            "width": 624,
+            "height": 140
+          }
+        },
+        {
+          "visualId": "visual_trend_sales_ytd",
+          "visualType": "clusteredColumnChart",
+          "implementationStrategy": {
+            "mode": "native",
+            "primaryVisualType": "clusteredColumnChart",
+            "secondaryVisualTypes": [],
+            "fallbackMode": null,
+            "fidelityRisk": "low",
+            "constraints": [],
+            "workarounds": [],
+            "notFeasibleAspects": []
+          },
+          "title": "Sales FYTD by Fiscal Month",
+          "measures": [
+            "Sales LC YTD"
+          ],
+          "axisFields": [
+            "Dim_Date[Fiscal Month-Year]"
+          ],
+          "legendField": null,
+          "narrativeRole": "trend",
+          "containerStyle": "elevated",
+          "sortBy": {
+            "field": "Dim_Date[Fiscal Month-Year]",
+            "direction": "Ascending"
+          },
+          "defaultGranularity": "Month-Year",
+          "tooltip": null,
+          "drillthrough": null,
+          "position": {
+            "x": 16,
+            "y": 252,
+            "width": 624,
+            "height": 320
+          }
+        }
+      ],
+      "interactions": {
+        "crossFilterMode": "highlight",
+        "customInteractions": []
+      }
+    }
+  ],
+  "navigation": {
+    "model": "tabs",
+    "drillthroughPages": [],
+    "bookmarks": []
+  },
+  "accessibility": {
+    "altTextRequired": true,
+    "colorBlindSafe": true,
+    "notes": []
+  },
+  "performanceGuardrails": {
+    "maxVisualsPerPage": 8,
+    "avoidHighCardinalitySlicers": true,
+    "preferMeasuresOverImplicitAggregations": true,
+    "notes": []
+  }
+}

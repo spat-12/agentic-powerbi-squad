@@ -1,0 +1,119 @@
+table _Measures
+	lineageTag: 550e8400-e29b-41d4-a716-446655440034
+
+	partition _Measures = m
+		mode: import
+		source =
+			```
+			let
+			    Source = #table(type table [_dummy = type text], {})
+			in
+			    Source
+			```
+
+	/// Total actual sales revenue in local currency for the selected period.
+	measure 'Sales LC' =
+			SUM(Fact_Sales[Sales Amount LC])
+		formatString: #,##0.00
+		displayFolder: Sales
+		lineageTag: 550e8400-e29b-41d4-a716-446655440035
+
+	/// Sales revenue from fiscal year start (July 1) to the selected date.
+	measure 'Sales LC YTD' =
+			CALCULATE(
+				[Sales LC],
+				DATESYTD(Dim_Date[Date], "6/30")
+			)
+		formatString: #,##0.00
+		displayFolder: Sales
+		lineageTag: 550e8400-e29b-41d4-a716-446655440036
+
+	/// Sales revenue for the same fiscal period one fiscal year earlier.
+	measure 'Sales LC PY' =
+			CALCULATE(
+				[Sales LC YTD],
+				SAMEPERIODLASTYEAR(Dim_Date[Date])
+			)
+		formatString: #,##0.00
+		displayFolder: Sales
+		lineageTag: 550e8400-e29b-41d4-a716-446655440037
+
+	/// Year-over-year sales growth percentage; compares fiscal YTD periods.
+	measure 'Sales LC YOY %' =
+			VAR CurrentYTD = [Sales LC YTD]
+			VAR PriorYTD = [Sales LC PY]
+			RETURN
+				DIVIDE(
+					CurrentYTD - PriorYTD,
+					PriorYTD,
+					BLANK()
+				)
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Sales
+		lineageTag: 550e8400-e29b-41d4-a716-446655440038
+
+	/// Total budgeted sales revenue in local currency for the selected period.
+	measure 'Budget LC' =
+			SUM(Fact_Sales[Budget Amount LC])
+		formatString: #,##0.00
+		displayFolder: Budget
+		lineageTag: 550e8400-e29b-41d4-a716-446655440039
+
+	/// Variance between actual sales and budget: Sales LC - Budget LC.
+	measure 'Budget Variance LC' =
+			VAR ActualSales = [Sales LC]
+			VAR BudgetAmount = [Budget LC]
+			RETURN
+				ActualSales - BudgetAmount
+		formatString: #,##0.00
+		displayFolder: Budget
+		lineageTag: 550e8400-e29b-41d4-a716-446655440040
+
+	/// Budget variance as a percentage of budget; handles zero division safely.
+	measure 'Budget Variance %' =
+			VAR BudgetVarianceAmount = [Budget Variance LC]
+			VAR BudgetAmount = [Budget LC]
+			RETURN
+				DIVIDE(
+					BudgetVarianceAmount,
+					BudgetAmount,
+					BLANK()
+				)
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Budget
+		lineageTag: 550e8400-e29b-41d4-a716-446655440041
+
+	/// Total adjusted profit (gross profit) in local currency for the selected period.
+	measure 'Adjusted Profit LC' =
+			SUM(Fact_Sales[Profit Amount LC])
+		formatString: #,##0.00
+		displayFolder: Profit
+		lineageTag: 550e8400-e29b-41d4-a716-446655440042
+
+	/// Adjusted profit as a percentage of sales; handles zero sales division safely.
+	measure 'Adjusted Profit %' =
+			VAR ProfitAmount = [Adjusted Profit LC]
+			VAR SalesAmount = [Sales LC]
+			RETURN
+				DIVIDE(
+					ProfitAmount,
+					SalesAmount,
+					BLANK()
+				)
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Profit
+		lineageTag: 550e8400-e29b-41d4-a716-446655440043
+
+	/// Budget achievement percentage; shows what percentage of budget was met by actual sales.
+	measure 'Budget Achievement %' =
+			VAR ActualSales = [Sales LC]
+			VAR BudgetAmount = [Budget LC]
+			RETURN
+				DIVIDE(
+					ActualSales,
+					BudgetAmount,
+					BLANK()
+				)
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Budget
+		lineageTag: 550e8400-e29b-41d4-a716-446655440044

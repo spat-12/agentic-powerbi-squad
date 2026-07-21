@@ -1,0 +1,82 @@
+table Dim_Date
+	lineageTag: 550e8400-e29b-41d4-a716-446655440001
+
+	partition Dim_Date = m
+		mode: import
+		source =
+			```
+			let
+			    Source = Csv.Document(File.Contents("data/Dim_Date.csv"),[Delimiter=",", Columns=4, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+			    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+			    Changed = Table.TransformColumnTypes(Promoted,{{"Date", type date}, {"Year", Int64.Type}, {"Month", Int64.Type}, {"MonthYear", type text}})
+			in
+			    Changed
+			```
+
+	column DateKey
+		dataType: dateTime
+		isKey
+		isHidden
+		sourceColumn: Date
+		summarizeBy: none
+		lineageTag: 550e8400-e29b-41d4-a716-446655440002
+
+	column Date
+		dataType: dateTime
+		sourceColumn: Date
+		summarizeBy: none
+		lineageTag: 550e8400-e29b-41d4-a716-446655440003
+
+	column CalendarYear
+		dataType: int64
+		sourceColumn: Year
+		summarizeBy: none
+		lineageTag: 550e8400-e29b-41d4-a716-446655440004
+
+	column CalendarMonth
+		dataType: int64
+		sourceColumn: Month
+		summarizeBy: none
+		lineageTag: 550e8400-e29b-41d4-a716-446655440005
+
+	column 'Calendar Month-Year'
+		dataType: string
+		sourceColumn: MonthYear
+		summarizeBy: none
+		displayFolder: Calendar
+		lineageTag: 550e8400-e29b-41d4-a716-446655440006
+
+	column FiscalYear
+		dataType: int64
+		sourceColumn: FiscalYear
+		summarizeBy: none
+		displayFolder: Fiscal
+		lineageTag: 550e8400-e29b-41d4-a716-446655440007
+
+	column FiscalQuarter
+		dataType: string
+		sourceColumn: FiscalQuarter
+		summarizeBy: none
+		displayFolder: Fiscal
+		lineageTag: 550e8400-e29b-41d4-a716-446655440008
+
+	column FiscalMonth
+		dataType: int64
+		sourceColumn: FiscalMonth
+		summarizeBy: none
+		displayFolder: Fiscal
+		lineageTag: 550e8400-e29b-41d4-a716-446655440009
+
+	column 'Fiscal Month-Year'
+		dataType: string
+		sourceColumn: FiscalMonthYear
+		summarizeBy: none
+		displayFolder: Fiscal
+		lineageTag: 550e8400-e29b-41d4-a716-446655440010
+
+	hierarchy 'Date Hierarchy'
+		level FiscalYear
+		level FiscalQuarter
+		level FiscalMonth
+		level Date
+		lineageTag: 550e8400-e29b-41d4-a716-446655440011
